@@ -69,8 +69,8 @@ bsp/stm32f407g/*
 !bsp/stm32f407g/CMakeLists.txt
 
 # ignore document graphics
-docs/graphics/**/*.pdf
-docs/graphics/**/*.svg
+docs/graphics/dot/*.pdf
+docs/graphics/dot/*.svg
 docs/graphics/.sconsign.dblite
 
 # ---[ EOF ]--- #
