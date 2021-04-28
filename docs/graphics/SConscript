@@ -1,0 +1,8 @@
+Import('env')
+
+graphics = []
+
+dot = env.SConscript('dot/SConscript', exports=['env'])
+graphics.extend(dot)
+
+Return('graphics')
