@@ -65,7 +65,7 @@ compile_commands.json
 
 # ignore everything in bsp/stm32f407g except cubemx project and cmake files
 bsp/stm32f407g/*
-!bsp/stm32f407g/prototype.ioc
+!bsp/stm32f407g/stm32f407g.ioc
 !bsp/stm32f407g/CMakeLists.txt
 
 # ignore document graphics
