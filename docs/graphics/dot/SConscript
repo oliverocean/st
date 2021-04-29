@@ -1,0 +1,7 @@
+Import('env')
+
+dots = env.Glob('*.dot')
+
+pdfs = [env.dot(dot) for dot in dots]
+
+Return('pdfs')

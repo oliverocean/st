@@ -1,0 +1,24 @@
+dot = Builder(
+    action = 'dot -Tpdf -o $TARGET $SOURCE',
+    suffix = '.pdf',
+    src_suffix = '.svg'
+)
+
+svg2pdf = Builder(
+    action = 'inkscape --export-filename=$TARGET $SOURCE 2> /dev/null',
+    suffix = '.pdf',
+    src_suffix = '.svg'
+)
+
+noml = Builder(
+    action='npx nomnoml $SOURCE $TARGET',
+    suffix='.svg', src_suffix='.noml'
+)
+
+env = Environment(BUILDERS={
+    'dot': dot,
+    'noml': noml,
+    'svg2pdf': svg2pdf,
+})
+
+graphics = env.SConscript('SConscript', exports=['env'])
