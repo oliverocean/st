@@ -1,9 +1,9 @@
 # <--[ CMakeLists.txt ]--> #
+cmake_minimum_required(VERSION 3.16)
+
+enable_language(ASM)
 
 project(stm32f407g)
-
-cmake_minimum_required(VERSION 3.16)
-enable_language(ASM)
 
 # <--[ Source + Include ]------------------------------------------------------------> #
 
