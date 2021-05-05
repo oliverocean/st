@@ -1,14 +1,13 @@
-# CMakeLists.txt
+# <--[ CMakeLists.txt ]--> #
 
 project(stm32f407g)
+
 cmake_minimum_required(VERSION 3.16)
 enable_language(ASM)
-set(LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/STM32F407VGTx_FLASH.ld)
-
 
 # <--[ Source + Include ]------------------------------------------------------------> #
 
-# <--[ STM32CubeMX ]--> #
+# <--[ STM32 Core ]--> #
 set (CORE_DIR Core)
 
 list(APPEND ${PROJECT_NAME}_SOURCE_FILES
@@ -22,7 +21,7 @@ list(APPEND ${PROJECT_NAME}_INCLUDE_DIRS
     ${CORE_DIR}/Inc
 )
 
-# <--[ ASM ]--> #
+# <--[ STM32 Startup (ASM) ]--> #
 list(APPEND ${PROJECT_NAME}_SOURCE_FILES
     startup_stm32f407xx.s
 )
@@ -61,22 +60,27 @@ list(APPEND ${PROJECT_NAME}_INCLUDE_DIRS
     ${CMSIS_DIR}/Device/ST/STM32G0xx/Include
 )
 
-# <--[ FreeRTOS ]--> #
-set(FREERTOS_DIR Middlewares/Third_Party/FreeRTOS)
+# <--[ Library + Linking ]---------------------------------------------------------------------> #
 
+### QQ: why is "EXCLUDE_FROM_ALL" needed here?
 
-# <--[ Library ]---------------------------------------------------------------------> #
-
+# <--[ Compile an object library with appended source list ]--> #
 add_library(${PROJECT_NAME} OBJECT EXCLUDE_FROM_ALL
     ${${PROJECT_NAME}_SOURCE_FILES}
 )
 
+# <--[ Pre-defined symbols/defines mandatory for MCU macro and driver API access ]--> #
 target_compile_definitions(${PROJECT_NAME} PUBLIC
     USE_HAL_DRIVER
     STM32G070xx
-    CMSIS_device_header=<stm32g0xx.h>
 )
 
+# <--[ Compile target with appended includes list ]--> #
 target_include_directories(${PROJECT_NAME} PUBLIC
     ${${PROJECT_NAME}_INCLUDE_DIRS}
 )
+
+# <--[ Link using MCU-specific storage characteristics ]--> #
+set(LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/STM32F407VGTx_FLASH.ld)
+
+# <--[ eof ]--> #
