@@ -1,0 +1,9 @@
+# <--[ openocd-run.gdb.in ]----------------------------------------------------------> #
+
+file @TARGET_NAME@
+target extended-remote localhost:3333
+monitor reset halt
+load
+thbreak main
+
+# <--[ eof ]-------------------------------------------------------------------------> #
