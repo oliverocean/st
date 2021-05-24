@@ -1,5 +1,7 @@
 # <--[ binutils-arm-none-eabi.cmake ]------------------------------------------------> #
 
+# GNU Binutils: gnu.org/software/binutils
+
 # <--[ set tools ]--> #
 set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
 set(CMAKE_OBJDUMP arm-none-eabi-objdump)
