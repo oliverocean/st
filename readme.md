@@ -1,6 +1,6 @@
 # TODO
-- board description
-- build instructions
+- document: board description, build instructions
 - test new build on board
-- select peripheral to implement next
+- update system diagram, add png to project page
 - setup CMSIS/FreeRTOS
+- implement peripherals (display, led strip, sd card reader, etc)
