@@ -1,7 +1,10 @@
-# Build
+# Prototype F4
+- board: STM32f407g-disc1
+- dependencies: arm-none-eabi-[...], aarch64-linux-gnu-[...]
 
-The BSP folder on the repo only contains ```CMakeLists.txt``` and ```prototype-f4.ioc```.
-The ```ioc``` file can be used to generate the necessary bsp files via the STM32CubeMX tool.
+# Build
+The BSP folder on the repo only contains a cmake file and ```prototype-f4.ioc```.
+This ```ioc``` file can be used to generate the necessary bsp files via the STM32CubeMX tool.
 (note this is not the same tool as 'STM32CubeIDE').
 
 If you are on Arch Linux, you can install it from the aur with:
