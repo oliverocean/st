@@ -1,5 +1,14 @@
 # Build
-- open ```bsp/prototype-f4.ioc``` with STM32CubeMX and generate the BSP code
+
+The BSP folder on the repo only contains ```CMakeLists.txt``` and ```prototype-f4.ioc```.
+The ```ioc``` file can be used to generate the necessary bsp files via the STM32CubeMX tool.
+(note this is not the same tool as 'STM32CubeIDE').
+
+If you are on Arch Linux, you can install it from the aur with:
+```yay -S stm32cubemx```
+
+Open ```prototype-f4.ioc``` and click the 'generate code' button.
+The tool should automagically download board-specific firmware and such if needed.
 
 ```zsh
 # make sure the BSP code was generated
@@ -13,7 +22,7 @@ startup_stm32f407xx.s
 STM32F407VGT_FLASH.ld
 
 # sort .ioc file to avoid extraneous git updates (CubeMX randomly switches line order)
-sort prototype-f4.ioc -o prototype-f4.ioc
+% sort prototype-f4.ioc -o prototype-f4.ioc
 
 # create the build directory
 % mkdir build
